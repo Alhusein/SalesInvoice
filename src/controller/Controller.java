@@ -11,7 +11,7 @@ import Model.Invoice;
 import Model.InvoicesTableModel;
 import Model.Line;
 import Model.LinesTableModel;
-import java.awt.List;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -92,16 +92,13 @@ public class Controller implements ActionListener, ListSelectionListener {
 
     private void loadFile() {
         JFileChooser fc = new JFileChooser();
-        try {
-            int result = fc.showOpenDialog(frame);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File headerFile = fc.getSelectedFile();
-                Path headerPath = Paths.get(headerFile.getAbsolutePath());
-                List<String> headerLines = Files.readAllLines(headerPath);
-                System.out.println("Invoices have been read");
-                // 1,22-11-2020,Ali
-                // 2,13-10-2021,Saleh
-                // 3,09-01-2019,Ibrahim
+          try {
+
+        int result = fc.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION){
+            File headerFile = fc.getSelectedFile();
+            Path headerPath = Paths.get(headerFile.getAbsolutePath());
+             List<String> headerLines = Files.readAllLines(headerPath);
                 ArrayList<Invoice> invoicesArray = new ArrayList<>();
                 for (String headerLine : headerLines) {
                     try {
@@ -294,13 +291,4 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 
 
-
-      
-        
-            
-                
-                
-                
-
     
-
